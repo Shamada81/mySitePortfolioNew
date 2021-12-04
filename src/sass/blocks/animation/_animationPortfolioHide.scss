@@ -1,0 +1,61 @@
+// Константа, задающая длительность анимации
+$animation-time: .6s;
+
+// Классы, анимирующие всплытие и скрытие элементов
+// appear-left и appear-right - всплытие с левой и правой стороны соответсвенно
+.appear-left {
+	// display: grid;
+	// display: list-item;
+	animation: appearLeft $animation-time linear forwards;
+}
+.appear-right {
+	// display: grid;
+	// display: list-item;
+	animation: appearRight $animation-time linear forwards;
+}
+// hide-left и hide-right - скрытие влево и вправо соответсвенно
+.hide-left {
+	animation: hideLeft $animation-time linear forwards;
+
+}
+.hide-right {
+	animation: hideRight $animation-time linear forwards;
+}
+
+// Анимации скрытия и всплытия
+@keyframes hideLeft {
+	0% {
+		transform: translateX(0vw);
+	}
+	100% {
+		transform: translateX(-80vw);
+		display: none;
+	}
+}
+@keyframes hideRight {
+	0% {
+		transform: translateX(0vw);
+	}
+	100% {
+		transform: translateX(80vw);
+		display: none;
+	}
+}
+
+@keyframes appearLeft {
+	0% {
+		transform: translateX(-80vw);
+	}
+	100% {
+		transform: translateX(0vw);
+	}
+}
+
+@keyframes appearRight {
+	0% {
+		transform: translateX(80vw);
+	}
+	100% {
+		transform: translateX(0vw);
+	}
+}

@@ -1,0 +1,79 @@
+// Для работы кнопки, её структура должна иметь вложеный div
+// Пример: <li class="btn"> <div> Нажми меня</div> </li>
+// Толщина обводки регулируется с помощью $btn-border-width или в ручную,
+// изменением в div: width и height, а так же в &::after свойства inset
+
+$btn-border-width: 2px;
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+	width: 120px;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 50px;
+
+	&.active {
+		border: 1px solid $text-title-color;
+		color: #000;
+		background-color: $text-title-color;
+		border-radius: 50px;
+		padding: 5px 10px;
+		&:hover {
+			color: $text-title-color;
+		}
+	}
+	&::before {
+		content: '';
+		position: absolute;
+		width: 120px;
+		height: 120px;
+		left: -130px;
+		top: 18px;
+		transform-origin: 100% 0%;
+		transform: rotate(45deg);
+		background: $text-title-color;
+		transition: all .5s linear .0s;
+	}
+	&:hover::before {
+		transform: rotate(225deg);
+		transform-origin: 100% 0%;
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		border-radius: 25px;
+		inset: $btn-border-width;
+		transition: all .3s linear;
+		
+	}
+	&:hover::after {
+		background: #000;
+	}
+
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		position: relative;
+		width: calc(100% - (#{$btn-border-width} * 2));
+		height: calc(100% - (#{$btn-border-width} * 2));
+		border-radius: 50px;
+		z-index: 100;
+		background: none;
+		transition: all 0.9s ease-out;
+
+		&:hover {
+			background: #000;
+			
+		}
+	}
+}

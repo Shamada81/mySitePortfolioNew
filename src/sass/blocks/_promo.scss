@@ -1,0 +1,123 @@
+.promo {
+	// position: absolute;
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	// background: url('../../img/background/background1.jpg');
+	// background-size: cover;
+	// background-position: right;
+
+	display: grid;
+	grid-template-columns: auto minmax(320px, 1440px) auto;
+	grid-template-rows: 1fr;
+	grid-template-areas: ". wrapper .";
+	// justify-content: center;
+	// align-items: center;
+	// justify-items: center;
+	// align-items:center;
+	// align-content: center;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+
+.promo__wrapper__title {
+	padding: 100px 60px;
+	// position: absolute;
+	grid-area: wrapper;
+	// display: grid;
+	// justify-content: space-between;
+	// align-items: flex-start;
+	// @include wrapper;
+	width: 100%;
+	height: 100%;
+	// grid-template-columns: 1fr auto;
+	// grid-template-rows: auto 1fr 1fr auto;
+	// grid-template-areas: 
+	// 	". ."
+	// 	"title ."
+	// 	"welcome ."
+	// 	". ."
+
+	background-size: cover;
+	background-position: right;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	z-index: 10;
+	color: $text-title-color;
+	.promo__title {
+		position: relative;
+		max-width: 20%;
+		// grid-area: title;
+		// text-align: center;
+		
+		// max-width: 1000px;
+		// top: 35%;
+		// left: 50%;
+		// transform: translateX(-50%) translateY(-50%);
+		// align-self: center;
+		// display: grid;
+		// grid-template-columns: 1fr auto;
+		// grid-template-rows: 1fr 1fr;
+		// grid-template-areas: 
+		// 	"hello ."
+		// 	"Im ."
+		// ;
+		h2 {
+			// max-width: 80%;
+			// margin: 0 auto;
+			// text-transform: uppercase;
+			// font-variant: small-caps;
+			// font-style: italic;
+
+			// grid-area: hello;
+			margin-bottom: 0;
+			line-height: 1;
+			font-weight: 200;
+			&.title_fz42 {
+				font-weight: 200;
+				line-height: 150%;
+			}
+			
+
+		}
+		h1 {
+			// grid-area: Im;
+			font-weight: 700;
+			&.title_fz72 {
+				margin-bottom: 0px;
+				font-weight: 700;
+				line-height: 150%;
+			}
+		}
+		&__welcome {
+			position: relative;
+			width: 200%;
+			// grid-area: welcome;
+			// max-width: 50%;
+			// top: 50%;
+			// left: 50%;
+			// transform: translateX(-50%) translateY(-50%);
+			h2 {
+				// text-align: center;
+				// transform: rotate(-10deg);
+				font-style: italic;
+				&.title_fz24 {
+					font-weight: 800;
+					line-height: 100%;
+				}
+				&.title_fz36 {
+					font-weight: 600;
+					line-height: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+
+

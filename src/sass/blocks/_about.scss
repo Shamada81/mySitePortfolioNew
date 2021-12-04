@@ -1,0 +1,47 @@
+.about {
+	@include page;
+	@include black;
+	h2 {
+		grid-area: title;
+		text-align: center;
+	}
+	&__title {
+		color: $text-title-color;
+		text-shadow: black 1px 1px 2px;
+		// @include gradient-text;
+	}
+	&__wrapper {
+		grid-area: wrapper;
+		@include wrapper;
+		display: grid;
+		grid-template-columns: 2fr 3fr;
+		grid-template-rows: 1fr;
+		column-gap: 100px;
+	}
+	&__photo {
+		// grid-area: photo;
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: cover;
+		}
+	}
+	&__text {
+		display: grid;
+		grid-template-columns: 100%;
+		grid-template-rows: auto auto 1fr;
+		row-gap: 20px;
+		span {
+			font-weight: 600;
+			font-style: italic;
+			text-decoration: underline;
+		}
+		&__education-items {
+			margin: 0;
+		}
+		&__education-item {
+			padding-left: 25px;
+			list-style-type: none;
+		}
+	}
+}

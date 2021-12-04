@@ -1,0 +1,39 @@
+@mixin gradient-text {
+	background: linear-gradient(45deg, $text-title-color 33%, blue 66%, $text-title-color 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@mixin wrapper {
+	margin-top: 30px;
+	padding: 10px 30px 10px 30px;
+	// background-color: $bg-color;
+	min-height: 600px;
+	// min-height: calc(100vh - 70px);
+}
+
+@mixin page {
+	position: relative;
+	padding: 100px 52px 100px 72px;
+	width: 100%;
+	min-height: 800px;
+	// min-height: 100vh;
+	// margin-top: 120px;
+	display: grid;
+	grid-template-columns: auto minmax(320px, 1440px) auto;
+	grid-template-rows: auto 1fr;
+	grid-template-areas: 
+		". title ."
+		". wrapper ."
+	;
+}
+
+@mixin black {
+	background: $bg-page-black;
+	color: $text-color;
+}
+
+@mixin white {
+	background: $bg-page-white;
+	color: $text-color-white;
+}

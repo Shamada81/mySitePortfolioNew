@@ -1,0 +1,116 @@
+// Стили для заполнения фона квадратами
+.promo__bg {
+	position: absolute;
+	top: 0;
+	// left: -1px;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	overflow: hidden;
+	flex-wrap: wrap;
+	.blocks {
+		position: relative;
+		display: block;
+		opacity: 0;
+		overflow: hidden;
+		animation: animate .8s ease-in-out forwards;
+	}
+	img {
+		background: url('../../img/background/promo_bg.jpg');
+		// background-image: url('../../img/background/background2.jpg');
+		// background-attachment: fixed;
+		background-size: cover;
+		background-position:right;
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+	}
+}
+
+
+
+// Анимация заполнения экрана квадратами
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: scale(0) translateY(1000px);
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1) translateY(0px);
+	}
+}
+
+// Анимирование текста
+
+// Блок анимирования "печати" текста
+.promo__title-animate {
+	position: relative;
+	display: grid;
+	opacity: 1;
+  }
+  
+  .letter {
+	position: relative;
+	transform: translateZ(25px);
+	transform-origin: 50% 50% 25px;
+  }
+  
+  .letter.behind {
+	transform: rotateX(-90deg)  translateY(-200px);
+  }
+  
+  .letter.in {
+	transform: rotateX(0deg);
+	transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+.promo__title__welcome {
+	opacity: 0;
+	animation: textVisibility 1s 4s ease-in-out forwards;
+	h2 {
+
+		-webkit-text-stroke: 1px black;
+		background: linear-gradient(to right, #a2c6f0, #a04ce4,#a2c6f0, #15c49e, #a2c6f0, #a04ce4, #a2c6f0);
+		background-size: 600% 200%;
+	  	animation: textGradient 10s linear;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	  	// animation: textGradient 10s linear infinite;
+	}
+}
+
+// Анимация появления текста
+@keyframes textVisibility {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+// Анимация градиента текста
+@keyframes textGradient {
+
+	0%{
+		background-position: 0 50%;
+		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+	50% {
+		background-position: 100% 50%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	100% {
+		background-position: 0 50%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+  

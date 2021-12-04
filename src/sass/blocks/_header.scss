@@ -1,0 +1,39 @@
+.header {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: #000;
+	padding: 10px 100px;
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	grid-template-rows: 1fr;
+	align-items: center;
+	justify-content: space-between;
+	scroll-behavior: smooth;
+
+	z-index: 1000;
+
+	&__logo {
+		color: $text-color;
+
+	}
+
+	&__menu {
+		display: flex;
+		margin-bottom: 0;
+		&-item {
+			// display: inline-block;
+			padding: 0;
+			margin: 0 15px;
+			list-style: none;
+			a {
+				position: relative;
+				display: inline-block;
+				text-decoration: none;
+				color: $text-color;
+				font-size: 14px;
+			}
+		}
+	}
+}
