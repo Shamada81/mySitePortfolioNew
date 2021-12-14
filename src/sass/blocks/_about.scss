@@ -1,6 +1,6 @@
 .about {
 	@include page;
-	@include black;
+	@include white;
 	h2 {
 		grid-area: title;
 		text-align: center;
@@ -8,28 +8,24 @@
 	&__title {
 		color: $text-title-color;
 		text-shadow: black 1px 1px 2px;
-		// @include gradient-text;
 	}
 	&__wrapper {
 		grid-area: wrapper;
 		@include wrapper;
 		display: grid;
-		grid-template-columns: 2fr 3fr;
+		grid-template-columns: 400px 1fr;
 		grid-template-rows: 1fr;
 		column-gap: 100px;
 	}
 	&__photo {
-		// grid-area: photo;
-		img {
-			max-width: 100%;
-			max-height: 100%;
-			object-fit: cover;
-		}
+		background: url(../../img/main_photo400x600x96.jpg);
+		background-size: 100%;
+		background-repeat: no-repeat;
 	}
 	&__text {
 		display: grid;
 		grid-template-columns: 100%;
-		grid-template-rows: auto auto 1fr;
+		grid-template-rows: auto auto auto 1fr;
 		row-gap: 20px;
 		span {
 			font-weight: 600;

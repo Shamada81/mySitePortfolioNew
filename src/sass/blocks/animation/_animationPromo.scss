@@ -2,13 +2,14 @@
 .promo__bg {
 	position: absolute;
 	top: 0;
-	// left: -1px;
 	right: 0;
 	width: 100vw;
-	height: 100vh;
-	display: flex;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 10vw);
+	grid-auto-rows: 10vh;
+	gap: 0;
 	overflow: hidden;
-	flex-wrap: wrap;
 	.blocks {
 		position: relative;
 		display: block;
@@ -18,10 +19,9 @@
 	}
 	img {
 		background: url('../../img/background/promo_bg.jpg');
-		// background-image: url('../../img/background/background2.jpg');
-		// background-attachment: fixed;
 		background-size: cover;
-		background-position:right;
+		background-position: right;
+		background-repeat: no-repeat;
 		position: absolute;
 		width: 100vw;
 		height: 100vh;
@@ -80,7 +80,6 @@
 	  	animation: textGradient 10s linear;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-	  	// animation: textGradient 10s linear infinite;
 	}
 }
 

@@ -1,6 +1,10 @@
 
 .info {
 	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
 	-webkit-transform: rotate3d(1, 0, 0, 90deg);
 	transform: rotate3d(1, 0, 0, 90deg);
 	width: 100%;
@@ -12,7 +16,10 @@
 	border-radius: 4px;
 	pointer-events: none;
 	background-color: $bg-color;
-
+	color: $text-color;
+	h3 {
+		text-align: center;
+	}
 }
 
 .in-top .info {
