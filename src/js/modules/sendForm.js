@@ -1,6 +1,8 @@
 const sendForm = () => {
 	
-	// Примитивная роверка  заполнения обязательных полей
+	// //*****Вспомогательные функции*****// //
+
+	// Примитивная проверка  заполнения обязательных полей
 	const formValidate = (form) => {
 		let error = 0;
 		const formReq = form.querySelectorAll('._req');
@@ -41,39 +43,102 @@ const sendForm = () => {
 		input.classList.remove('_error');
 	}
 
-	// Элемент форма
-	const form = document.querySelector('#form');
 
+
+	// //*****Основная часть****// //
+
+	// Элемент форма
+	const body = document.body,
+		  form = document.querySelector('#form'),
+		  sendingWrapperBlock = document.querySelector('.form__sending'),
+		  sendingMessageBlock = sendingWrapperBlock.querySelector('.form__sending-message'),
+		  closeSendingBlock = sendingMessageBlock.querySelector('.form__sending-close');
+	// Ответы при откравке формы
+	const message = {
+		loading: 'Загрузка...',
+		success: 'Спасибо! Скоро я с вами свяжусь',
+		failure: 'Что-то пошло не так...',
+		spinner: '../../img/form/loading.gif',
+		ok: '../../img/form/ok.png',
+		fail: '../../img/form/fail.png'
+	};
+	// Отправка формы
+	const postData = async (url, data) => {
+		let res = await fetch(url, {
+			method: 'POST',
+			body: data,
+		});
+	
+		return await res.text();
+	};
+
+
+
+
+	// Функция отправки формы
 	const formSend = async (e) => {
 		e.preventDefault();
 
-		let error = formValidate(form);
+		const timerOfClose = setTimeout(() => {
+			form.reset();
+			body.style.overflow = '';
+			statusImg.remove();
+			statusMessage.remove();
+			sendingMessageBlock.textContent = '';
+			sendingWrapperBlock.classList.remove('_sending')
+	
+		}, 3000);
 
+		// Путь к php файлу
+		const path = './sendmail.php';
+		// const path = './sendmail.php';
+
+		// Проверка валидности заполнения формы
+		let error = formValidate(form);
 		// Получаем данные формы
 		let formData = new FormData(form);
 
-		for (let [key, value] of formData) {
-			console.log(`key: ${key}, value: ${value}`);
-		}
+		let statusMessage = document.createElement('div');
+		statusMessage.classList.add('message')
+		sendingMessageBlock.prepend(statusMessage);
 
-		console.log(formData.getAll('message'));
+		let statusImg = document.createElement('img');
+		sendingMessageBlock.append(statusImg);
 
 		if(error === 0) {
-			form.classList.add('_sending');
-			let response = await fetch('./sendmail.php', {
-			// let response = await fetch('../../sendmail.php', {
-				method: 'POST',
-				body: formData
-			});
-			if(response.ok) {
-				let result = await response.json();
-				alert(result.message);
-				form.reset();
-				form.classList.remove('_sending');
-			} else {
-				alert('Ошибка');
-				form.classList.remove('_sending');
-			}
+			body.style.overflow = 'hidden';
+			sendingWrapperBlock.classList.add('_sending');
+			statusMessage.textContent = message.loading;
+			statusImg.setAttribute('src', message.spinner);
+
+
+			
+			postData(path, formData)
+				.then(response => {
+					statusMessage.textContent = message.success;
+					statusImg.setAttribute('src', message.ok)
+				})
+				.catch(() => {
+					statusMessage.textContent = message.failure;
+					statusImg.setAttribute('src', message.fail);
+				})
+				.finally(() => {
+					closeSendingBlock.addEventListener('click', (e) => {
+						const target = e.target;
+
+						console.log(`target: ${target}   ${target.tagname}`);
+
+						if(target && target.closest('.form__sending-close')) {
+							form.reset();
+							body.style.overflow = '';
+							statusImg.remove();
+							statusMessage.remove();
+							sendingMessageBlock.textContent = '';
+							sendingWrapperBlock.classList.remove('_sending');
+							clearTimeout(timerOfClose);
+						}
+					})
+				})
 		} else {
 			alert('Заполните поля')
 		}

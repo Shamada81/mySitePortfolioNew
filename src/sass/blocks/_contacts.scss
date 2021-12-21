@@ -23,6 +23,78 @@
 		grid-template-columns: 2fr 3fr;
 		grid-template-rows: 1fr;
 		column-gap: 100px;
+		.form__sending {
+			position: fixed;
+			display: none;
+			// display: flex;
+			visibility: hidden;
+			justify-content: center;
+			align-items: center;
+			width: 100vw;
+			height: 100vh;
+			top: 0px;
+			left: 0px;
+			background: $bg-color;
+			z-index: 2000;
+			transition: all .5s ease 0s;
+			&._sending {
+				display: flex;
+				visibility: visible;
+			}
+			&-message {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items:center;
+				background: #444;
+				border: 2px solid #666;
+				width: 30%;
+				min-width: 250px;
+				height: 250px;
+				.message {
+					color: white;
+					font-size: 20px;
+					font-weight: 600;
+				}
+				img{
+					margin-top: 2%;
+					width: 50px;
+					height: 50px;
+				}
+
+				// &._wait {
+				// 	background: none;
+				// 	border: none;
+				// 	background: url('../../img/form/loading.gif') center / 50px no-repeat;
+				// }
+			}
+			&-close {
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				top: 0%;
+				left: 100%;
+				width: 30px;
+				height: 30px;
+				transform: translate(-50%, -50%);
+				border: 1px solid #666;
+				background: #ccc;
+				border-radius: 100%;
+				cursor: pointer;
+				&:hover {
+					width: 32px;
+					height: 32px;
+					background: #eee;
+				}
+				img {
+					width: 65%;
+					height: 65%;
+					filter: invert(.8);
+				}
+			}
+		}
 	}
 	// Блок информации
 	&__info {
@@ -177,22 +249,22 @@
 		position: relative;
 		padding: 0px;
 		margin-top: 20px;
-		&:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba($color: $bg-page-white, $alpha: .3) url('../../img/form/loading.gif') center / 50px no-repeat;
-			opacity: 0;
-			visibility: hidden;
-			transition: all 0.3s ease 0s;
-		}
-		&._sending:after {
-			opacity: 1;
-			visibility: visible;
-		}
+		// &:after {
+		// 	content: '';
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	background: rgba($color: $bg-page-white, $alpha: .3) url('../../img/form/loading.gif') center / 50px no-repeat;
+		// 	opacity: 0;
+		// 	visibility: hidden;
+		// 	transition: all 0.3s ease 0s;
+		// }
+		// &._sending:after {
+		// 	opacity: 1;
+		// 	visibility: visible;
+		// }
 		&-input {
 			display: block;
 			width: 100%;
@@ -246,5 +318,9 @@
 				box-shadow: 0 2px 0 $text-title-color;
 			}
 		}
+		
 	}
+
+	// Блок сообщения об отправке формы
+	
 }

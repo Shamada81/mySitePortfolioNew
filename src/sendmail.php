@@ -14,12 +14,13 @@
 	// От кого
 	$mail->setFrom('v.levadny@rambler.ru', 'Mailer');
 	// Кому отправить
-	$mail->addAddress('v.levadnyy@internet.ru');
+	$mail->addAddress('shamada@levadnyy.ru');
+	// $mail->addAddress('v.levadnyy@internet.ru');
 	// Тема
-	$mail->Subject = 'Послание доброжелателя';
+	$mail->Subject = 'Сообщение с сайта';
 
 	// Тело письма
-	$mail->Body = 'Это круто!';
+	$mail->Body = 'Ловим';
 	
 	if(trim(!empty($_POST['name']))) {
 		$body.='<p><strong>Имя:</strong> '.$_POST['name'].'</p>';
@@ -45,6 +46,3 @@
 	header('Content-type: application/json');
 	echo json_encode($response);
 ?>
-
-
-

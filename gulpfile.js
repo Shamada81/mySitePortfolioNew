@@ -12,7 +12,6 @@ const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
 
 const dist = "./dist/";
-// const dist = 'D:/OpenServer/domains/picture/';
 
 
 gulp.task("build-js", () => {
